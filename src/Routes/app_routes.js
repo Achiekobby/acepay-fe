@@ -10,4 +10,8 @@ export const routes = [
     path: "auth/signup",
     element: <Auth />,
   },
+  {
+    path: "auth/login",
+    element: <Auth />,
+  },
 ];

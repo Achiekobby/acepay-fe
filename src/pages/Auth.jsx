@@ -1,16 +1,21 @@
-import React, {useEffect} from "react";
-import {Routes, Route, useNavigate, Outlet} from 'react-router-dom'
-import Login from "../components/signin/Login";
-import Signup from "../components/Signup/Signup";
+import React, { useState, useEffect } from "react";
+import Login from "../components/auth/Login";
+import Signup from "../components/auth/Signup";
 
 const Auth = () => {
+  const [location, setLocation] = useState("login");
+
+  useEffect(() => {
+    const current_url = window.location.href;
+    const parts = current_url.split("/");
+    const last_part = parts[parts.length - 1];
+    setLocation(last_part);
+  }, []);
 
   return (
     <main>
-
-      <h1>Auth</h1>
-      <Login/>
-      <Signup/>
+      {location === "login" && <Login />}
+      {location === "signup" && <Signup />}
     </main>
   );
 };
